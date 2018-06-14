@@ -76,3 +76,44 @@ swarm-worker-1 | SUCCESS => {
 }
 ```
 
+## Deploy Docker Swarm
+
+```
+$ ansible-playbook -i inventory.ini -u root deploy-swarm.yml 
+PLAY RECAP 
+
+client                     : ok=11   changed=3    unreachable=0    failed=0   
+swarm-manager              : ok=18   changed=4    unreachable=0    failed=0   
+swarm-worker-1             : ok=15   changed=1    unreachable=0    failed=0   
+swarm-worker-2             : ok=15   changed=1    unreachable=0    failed=0   
+```
+
+SSH to the Swarm Manager and List the Nodes:
+
+```
+$ docker node ls
+ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
+0ead0jshzkpyrw7livudrzq9o *   swarm-manager       Ready               Active              Leader              18.03.1-ce
+iwyp6t3wcjdww0r797kwwkvvy     swarm-worker-1      Ready               Active                                  18.03.1-ce
+ytcc86ixi0kuuw5mq5xxqamt1     swarm-worker-2      Ready               Active                                  18.03.1-ce
+```
+
+## Delete the Swarm:
+
+```
+$ ansible-playbook -i inventory.ini -u root delete-swarm.yml 
+
+PLAY RECAP 
+swarm-manager              : ok=2    changed=1    unreachable=0    failed=0   
+swarm-worker-1             : ok=2    changed=1    unreachable=0    failed=0   
+swarm-worker-2             : ok=2    changed=1    unreachable=0    failed=0   
+```
+
+Ensure the Nodes is removed from the Swarm, SSH to your Swarm Manager:
+
+```
+$ docker node ls
+Error response from daemon: This node is not a swarm manager. Use "docker swarm init" or "docker swarm join" to connect this node to swarm and try again.
+```
+
+Thanks a lot to [lucj](https://github.com/lucj/swarm-rexray-ceph), make sure to checkout his repo.
