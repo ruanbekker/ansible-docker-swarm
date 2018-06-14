@@ -1,0 +1,13 @@
+---
+- name: Copy Publick Key to Other Hosts
+  become: true
+  become_user: docker
+  copy:
+    src: /tmp/id_rsa.pub
+    dest: /tmp/id_rsa.pub
+    mode: 0644
+- name: Append Public key in authorized_keys file
+  authorized_key:
+    user: docker
+    state: present
+    key: "{{ lookup('file', '/tmp/id_rsa.pub') }}"
