@@ -1,4 +1,4 @@
-# ansible-docker-swarm
+# ansible-docker-swarm ![](https://saythanks.io/to/ruanbekker)
 
 Setup Docker Swarm with Ansible.
 
