@@ -159,3 +159,7 @@ Error response from daemon: This node is not a swarm manager. Use "docker swarm 
 ```
 
 Thanks a lot to [lucj](https://github.com/lucj/swarm-rexray-ceph), make sure to checkout his repo.
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/ruanbekker/ansible-docker-swarm.svg)](https://starchart.cc/ruanbekker/ansible-docker-swarm)
