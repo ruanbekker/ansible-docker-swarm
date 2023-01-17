@@ -35,3 +35,8 @@
   hosts: swarm_workers
   roles:
     - docker-swarm-add-worker
+
+- name: add managers to the swarm
+  hosts: swarm_managers
+  roles:
+    - docker-swarm-add-manager

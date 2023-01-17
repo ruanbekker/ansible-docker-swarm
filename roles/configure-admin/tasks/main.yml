@@ -20,6 +20,6 @@
 - name: run ssh-keyscan to add keys to known_hosts
   shell: "ssh-keyscan {{ item }} >> ~/.ssh/known_hosts"
   with_items:
-    - "swarm-manager"
-    - "swarm-worker-1"
-    - "swarm-worker-2"
+    - "server1.local"
+    - "server2.local"
+    - "server3.local"
